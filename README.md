@@ -1,2 +1,5 @@
 # Y1S1-Python
- Python tutorial work
+
+My weekly Python coding tasks in year 1 BSc Computer Science 
+(Software development and application moddeling).
+
