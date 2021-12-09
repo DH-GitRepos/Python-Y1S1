@@ -1,0 +1,72 @@
+# PROJECT: (WK-07) Coffee Pseudo-Code
+# Solution written by Darren Halpin
+
+# fill kettle
+    check if the kettle needs filling
+    if kettle is not full then
+        fill the kettle
+        turn the kettle on
+    else
+        turn the kettle on
+    end if
+
+# get a cup
+    open the cupboard
+    # locate a cup
+    if there is a cup in the cupboard then
+        retrieve a cup from the cupboard
+    else
+        check the sink
+        wash a cup
+        dry the cup
+        retrieve the cup from the sink
+    end if
+
+# put coffee and sugar in the cup
+    open the coffee jar
+    # check if the jar is empty
+    if jar is not empty then
+        pick up spoon
+        put coffee into cup
+    else
+        fill the coffee jar
+        pick up spoon
+        put coffee into cup
+    end if
+
+    open the sugar jar
+    # check if the sugar jar is empty
+    if jar is not empty then
+        pick up spoon
+        for 2 repetitions from 1-2 do
+            add spoons of sugar into cup
+    else
+        fill the sugar jar
+        pick up spoon
+        put required amount of sugar into cup
+    end if
+
+# get milk
+    if milk is required
+        open fridge door
+        if there is no milk
+            go get more milk
+        else
+            get the milk out of the fridge
+        end if
+    end if
+
+# check if the kettle is boiled
+    if the kettle is boiled
+        add water to cup
+        stir the contents
+    else
+        wait for the kettle to boil
+        add water to cup
+        stir the contents
+    end if
+
+# add milk
+    if the kettle is boiled and the water is poured then
+        add milk
+    end if

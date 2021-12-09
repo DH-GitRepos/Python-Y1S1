@@ -1,0 +1,33 @@
+# PROJECT: (WK-07) A Simple Calculator - Pseudo Code
+# Solution written by Darren Halpin
+
+# write intro info
+    write "simple calculator"
+    write "input 2 integers and an operator"
+
+# get user input
+    read "integer 1: "
+    read "integer 2: "
+    read "operator ( - + * / )"
+
+# check operator input and output result
+    if input operator is plus
+        sum = integer 1 plus integer 2
+        write "integer 1 plus integer 2 = sum"
+
+    else if input operator is minus
+        sum = integer 1 minus integer 2
+        write "integer 1 minus integer 2 = sum"
+
+    else if input operator is asterisk
+        sum = integer 1 multiplied by integer 2
+        write "integer 1 multiplied by integer 2 = sum"
+
+    else if input operator is forward slash
+        sum = integer 1 divided by integer 2
+        write "integer 1 divided by integer 2 = sum"
+
+    else
+        write "Invalid operator selected"
+
+    end if

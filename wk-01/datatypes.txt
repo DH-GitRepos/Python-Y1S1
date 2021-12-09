@@ -1,0 +1,7 @@
+a) float - because the profit number may contain decimal places.
+b) float - because the weight may contain a decimal place value.
+c) string - because the book title is a string of characters.
+d) float - because the measured unit is likely to have a decimal place value.
+e) integer - because the number of runs will be a whole number.
+f) string - because the number is a string of numbers, not requiring calculation.
+g) string - because this would accommodate both numeric values (10, 12, 14) as well as characters (S, M, L).

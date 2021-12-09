@@ -1,0 +1,332 @@
+# PROJECT: (WK-07) Character Generator
+# Solution written by Darren Halpin
+
+# IMPORT RANDOM MODULE
+    import random module
+
+# DEFINE DEFAULT CHARACTER CLASS VALUES
+
+    warrior attributes = [
+        strength value = 15,
+        intelligence value = 0,
+        wisdom value = 0,
+        dexterity value = 12,
+        constitution value = 10
+        ]
+
+    wizard attributes = [
+        strength value = 0,
+        intelligence value = 15,
+        wisdom value = 10,
+        dexterity value = 10,
+        constitution value = 0
+        ]
+
+    thief attributes = [
+        strength value = 10,
+        intelligence value = 9,
+        wisdom value = 0,
+        dexterity value = 15,
+        constitution value = 0
+        ]
+
+    necromancer attributes = [
+        strength value = 10,
+        intelligence value = 10,
+        wisdom value = 15,
+        dexterity value = 0,
+        constitution value = 0
+        ]
+
+
+# DEFINE BLANK CHARACTER BUILDING LISTS
+# - define empty class values for random roll
+    random attributes = [
+        strength value = 0,
+        intelligence value = 0,
+        wisdom value = 0,
+        dexterity value = 0,
+        constitution value = 0
+        ]
+
+# - define empty class deficit list
+    deficit attributes = [
+        strength value = 0,
+        intelligence value = 0,
+        wisdom value = 0,
+        dexterity value = 0,
+        constitution value = 0
+        ]
+
+# - define empty class surplus list
+    surplus attributes = [
+        strength value = 0,
+        intelligence value = 0,
+        wisdom value = 0,
+        dexterity value = 0,
+        constitution value = 0
+        ]
+
+# - define empty points trade list
+    trade attributes = [
+        strength value = 0,
+        intelligence value = 0,
+        wisdom value = 0,
+        dexterity value = 0,
+        constitution value = 0
+        ]
+
+# DEFINE STATS TABLE DISPLAY FUNCTION
+
+    function to display character stats table
+
+        write header row "Class", "Strength (S)", "Intelligence (I)", "Wisdom (W)", "Dexterity (D)", "Constitution (C)"
+
+        write row title "Base score"
+        for each attribute in random attributes list do
+            write strength value, intelligence value, wisdom value, dexterity value, constitution value
+        end for
+
+        write row title class name
+        for each attribute in default attributes list do
+            write strength value, intelligence value, wisdom value, dexterity value, constitution value
+        end for
+
+        write row title "Deficit"
+        for each attribute in deficit attributes list do
+            write strength value, intelligence value, wisdom value, dexterity value, constitution value
+        end for
+
+        write row title "Surplus"
+        for each attribute in surplus attributes list do
+            write strength value, intelligence value, wisdom value, dexterity value, constitution value
+        end for
+
+    end function
+
+
+# DEFINE FUNCTION TO UPDATE SURPLUS AND DEFICIT POINTS TABLES
+
+    function to update surplus and deficit lists
+
+        # CALCULATE AND POPULATE STATS DEFICIT LIST
+         for each attribute in random attributes do
+            if current random attribute is less than equivalent default attribute
+                deficit attribute = default character attribute - random attribute
+            else
+                deficit attribute = 0
+            end if
+         end for
+
+        # CALCULATE AND POPULATE STATS SURPLUS LIST
+            for each attribute in random attributes do
+                if current random attribute is greater than equivalent default attribute
+                    surplus attribute = random character attribute - default attribute
+                else
+                    surplus attribute = 0
+                end if
+             end for
+
+    end function
+
+
+# DEFINE FUNCTION TO CHECK ENOUGH TRADE POINTS ARE SELECTED
+
+    function to count trade points
+
+        current points = 0
+        for each attribute in trade attributes list do
+            current points = current points plus attribute value
+        end for
+
+        if current points is equal to 2 then
+            return true
+        else
+            return current points
+
+    end function
+
+
+# DEFINE FUNCTION TO CHECK NECESSARY MINIMUM ATTRIBUTE VALUES ARE MET
+
+    function to check minimum class points
+
+        deficit check pass = true
+
+        for each attribute in default attributes do
+            if attribute value not equal to 0 AND deficit list attribute not equal to zero then
+                deficit check pass = false
+            end if
+        end for
+
+    end function
+
+
+# DEFINE FUNCTION TO REMOVE STAT POINTS FROM RANDOM ATTRIBUTES AND UPDATE TRADE ATTRIBUTES
+
+    function to remove stat points with selected stat (selected stat)
+
+        # MAP SELECTED STAT TO LIST VALUE
+        if selected stat is equal to "S" then
+            stat name = "strength"
+        else if selected stat is equal to "I" then
+            stat name = "intelligence"
+        else if selected stat is equal to "W" then
+            stat name = "wisdom"
+        else if selected stat is equal to "D" then
+            stat name = "dexterity"
+        else if selected stat is equal to "C" then
+            stat name = "constitution"
+        end if
+
+        # CALCULATE NEW RANDOM STAT VALUE
+        random attributes list update = random attributes [selected stat] value minus 1
+
+        # UPDATE RANDOM STAT VALUE
+        random attributes [selected stat] = random attributes list update
+
+        # CALCULATE NEW TRADE STAT VALUE
+        trade attributes list update = trade attributes [selected stat] value plus 1
+
+        # UPDATE TRADE ATTRIBUTES VALUE
+        trade attributes [selected value] = trade attributes list update
+
+    end function
+
+
+# DEFINE FUNCTION TO ADD STAT POINTS TO TARGET ATTRIBUTE WITH SELECTED STAT
+
+    function to add stat points with target stat (selected stat)
+
+        # MAP SELECTED STAT TO LIST VALUE
+        if selected stat is equal to "S" then
+            stat name = "strength"
+        else if selected stat is equal to "I" then
+            stat name = "intelligence"
+        else if selected stat is equal to "W" then
+            stat name = "wisdom"
+        else if selected stat is equal to "D" then
+            stat name = "dexterity"
+        else if selected stat is equal to "C" then
+            stat name = "constitution"
+        end if
+
+        # CALCULATE NEW RANDOM STAT VALUE
+        random attributes list update = random attributes [selected stat] value plus 1
+
+        # UPDATE RANDOM STAT VALUE
+        random attributes [selected stat] = random attributes list update
+
+    end function
+
+
+# DEFINE FUNCTION TO CHECK FOR A VALID CHARACTER BUILD
+
+    function to check valid character build (character class)
+
+        # MAP SELECTED CLASS TO CORRECT LIST
+        if selected stat is equal to 1 then
+            class name = "warrior"
+        else if selected stat is equal to 2 then
+            class name = "wizard"
+        else if selected stat is equal to 3 then
+            class name = "thief"
+        else if selected stat is equal to 4 then
+            class name = "necromancer"
+        end if
+
+        valid build = true
+
+        for each attribute in default character list do
+            if random attributes [attribute] value is less than default attributes [attribute] value then
+                valid build = false
+            end if
+        end for
+
+        return valid build value
+
+    end function
+
+
+## MAIN CODE EXECUTION ##
+
+# ASK USER TO SELECT CHARACTER CLASS
+    write "Select your character class"
+    write "Choose from Warrior (1), Wizard (2), Thief (3), Necromancer (4)"
+    read character class
+    set current character class variable
+
+# BUILD RANDOM CHARACTER
+# ROLL RANDOM CHARACTER STATS
+    for each character stat in random attributes list do
+        stat in random attributes list = random number from 3 to 18
+    end for
+
+# UPDATE SURPLUS AND DEFICIT LISTS
+    call function to update surplus and deficit lists
+
+# DISPLAY CHARACTER STATS TABLE
+    call function to display character stats table
+
+
+# START CUSTOMISE CHARACTER PROCESS
+
+# LOOP CHARACTER BUILD PROCESS WHILE CHARACTER BUILD IS NOT VALID
+    while check valid character build function returns false do
+
+# CHECK IF THERE ARE ENOUGH SURPLUS POINTS TO COVER THE DEFICIT POINTS
+
+    # GET DEFICIT TOTAL
+        total deficit = 0
+        for each attribute in deficit attributes do
+            total deficit = total deficit plus current attribute value
+        end for
+
+    # GET SURPLUS TOTAL
+        total surplus = 0
+        for each attribute in surplus attributes do
+            total surplus = total surplus plus current attribute value
+        end for
+
+    # ACCOUNT FOR 2 FOR 1 POINT TRADE
+        actual surplus = total surplus floor division by 2
+
+    # CHECK DEFICIT VS SURPLUS DIFFERENCE
+        # IF NOT ENOUGH POINTS THEN QUIT
+            if total deficit is greater than actual surplus then
+                write "There are not enough spare points to meet the minimum requirements for your chosen class"
+                write "Please re-run the program"
+                exit program
+
+    # IF ENOUGH POINTS PROCESS STATS UPDATE
+        else if actual surplus is greater than or equal to total deficit then
+            write "You have enough points to trade to meet the minimum stats for your class"
+            write "You can trade 2 non-required points for 1 required stat point"
+
+            # SELECT UPTO 2 POINTS TO RE-ALLOCATE
+                while function to count trade points not return true do
+                    number of points chosen = function to count trade points
+                    number of points to choose = 2 - number of points chosen
+
+                    write "You have" number of points to choose "left to choose"
+                    write "Select a stat to remove a point from (S,I,W,D,C)"
+                    read selected stat
+                    call function to remove stat points with selected stat
+                end while
+
+            call function to display character stats table
+
+            if function to count trade points returns true then
+                write "You now have 1 point to allocate to another stat"
+                write "Choose target stat (S,I,W,D,C)"
+                read target stat
+                call function to add stat points with target stat
+            end if
+
+            write "New stat points:"
+            call function to display character stats table
+
+    end while
+
+    write "Congratulations, your character is ready to go!"
+

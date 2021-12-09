@@ -1,0 +1,37 @@
+# PROJECT: (WK-07) Restaurant Menu - Pseudo-Code
+# Solution written by Darren Halpin
+
+print("Main dishes are:")
+print("1. Lasagne")
+print("2. Stir Fry")
+main_dish = int(input("Please select dish: "))
+
+if main_dish == 1:
+    print("Side dishes are:")
+    print("1. Garlic bread")
+    print("2. Fries")
+    side_dish = int(input("Please select side dish: "))
+    if side_dish == 1:
+        print("You have selected Lasagne with garlic bread")
+    elif side_dish == 2:
+        print("You have selected Lasagne with fries")
+    else:
+        print("Invalid item selected")
+
+elif main_dish == 2:
+
+# BEGIN REFINEMENT
+    write side dishes message
+    write side dish option 1
+    write side dish option 2
+    read side dish selection
+    if side dish 1 selected
+        write side dish 1 option confirmation
+    else if side dish 2 selected
+        write side dish 2 option confirmation
+    else
+        write invalid selection message
+    end if
+
+else:
+    print("Invalid item selected")

@@ -1,0 +1,63 @@
+//display an initial grid
+positions <- 4 x 4 string array (('J', 'Q', 'K', 'J'),
+						('A', 'K', 'Q', 'J'),
+						('J', 'Q', 'K', 'A'),
+			        		('Q', 'A', 'K', 'A'))
+write ' ', 0, 1, 2, 3
+for 4 repetitions from 0 to 3 as rows do
+	write row number
+	for 4 repetitions from 0 to 3 as cols do
+		write '*'
+	end for
+end for
+
+//repeat until all cards are found
+while there are still cards to be found do
+
+    //get user guesses (validated for not already paired)
+    for each of the user's guesses (1 and 2) do
+        prompt user for card
+        read row, col
+        while guess already matched or out of range do
+            prompt user for card again
+            read row, col
+        end while
+
+        //display card in grid
+        write ' ', 0, 1, 2, 3
+        for 4 repetitions from 0 to 3 as rows do
+            write row number
+            for 4 repetitions from 0 to 3 as cols do
+                if current row / col match user's row/col then
+                    write value from positions[row, col]
+                else if current row / col already guessed then
+                    write 'X'
+                else
+                    write '*'
+                end if
+            end for
+        end for
+
+    end for
+
+    //process matching cards
+    if card values of user's guesses match then
+        matched <- user's cards
+        write congratulatory message
+    else
+        write conciliatory message
+    end if
+
+    //display updated game grid
+    write ' ', 0, 1, 2, 3
+    for 4 repetitions from 0 to 3 as rows do
+        write row number
+        for 4 repetitions from 0 to 3 as cols do
+            if current row / col already guessed then
+                write 'X'
+            else
+                write '*'
+            end if
+        end for
+    end for
+end while

@@ -1,0 +1,21 @@
+# PROJECT: (WK-07) Thunderbirds Are Go - Pseudo-Code
+# Solution written by Darren Halpin
+
+# Display an information message
+    write message to screen (Pick a Thunderbird 1-4)
+
+# Get user input
+    read user input (Thunderbird number)
+
+# Output message based on input
+    if user input == 1
+        write "Thunderbird 1 pilot is Scott Tracy"
+    else if user input == 2
+        write "Thunderbird 1 pilot is Scott Tracy"
+    else if user input == 3
+        write "Thunderbird 1 pilot is Scott Tracy"
+    else if user input == 4
+        write "Thunderbird 1 pilot is Scott Tracy"
+    else if user input is anything else
+        write "Have you never watched Thunderbirds!"
+    end if
